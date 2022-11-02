@@ -38,9 +38,12 @@ def collectQuestions(usersChoise):
     print("USER CHOISE IS: " + usersChoise)
     #Build question dict below
     with open('questions.txt') as f: # read list of all lines 
-        l = f.read().splitlines()
-    
+        klist = f.read().splitlines()
+        #must build list with as many questions as user demands!?? HOW??
+ 
     questions = convert_list_to_dict(l)
+    
+    print(usersChoise)
     return questions
 
 def convert_list_to_dict(a):
@@ -80,7 +83,7 @@ if __name__ == "__main__":
     if intro():
         player = CreatePlayer()
         game = CreateGame()
-        print(game.gameBoard,'\n')
+        # print(game.gameBoard,'\n')
         print(game.questions)
 
     # os.system('clear')
