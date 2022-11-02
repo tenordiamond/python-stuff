@@ -28,15 +28,25 @@ def CreateGame():
     nq = input()
     game = GameClass()
     game.questions = collectQuestions(nq)
-    # game.gameBoard = buildBoard()
-
+    game.gameBoard = "ASDASASDASASDSADASDASD"
+    return game
 
 def collectQuestions(usersChoise):
     """ Takes the number of questions that the user stated he/she wants and builds the question dictionary
     """
     questions = {}
+    print("USER CHOISE IS: " + usersChoise)
     #Build question dict below
+    with open('questions.txt') as f: # read list of all lines 
+        l = f.read().splitlines()
+    
+    questions = convert_list_to_dict(l)
     return questions
+
+def convert_list_to_dict(a):
+    it = iter(a)
+    res_dct = dict(zip(it, it))
+    return res_dct
 
 def timegiver(startTime, answertime):
     tic = startTime
@@ -68,7 +78,10 @@ def intro():
 if __name__ == "__main__":
     
     if intro():
-        print("YES")
         player = CreatePlayer()
+        game = CreateGame()
+        print(game.gameBoard,'\n')
+        print(game.questions)
+
     # os.system('clear')
     
