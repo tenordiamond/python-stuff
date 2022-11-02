@@ -15,6 +15,22 @@ class PlayerClass:
     name = ""
     points = 0
 
+def CreatePlayer():
+    p = PlayerClass
+    print("Type your chosen name\n")
+    p.name = input()
+    p.points = 0
+
+    return p
+
+def CreateGame():
+    print("How many questions do you want 1-6")
+    nq = input()
+    game = GameClass()
+    game.questions = collectQuestions(nq)
+    # game.gameBoard = buildBoard()
+
+
 def collectQuestions(usersChoise):
     """ Takes the number of questions that the user stated he/she wants and builds the question dictionary
     """
@@ -23,8 +39,9 @@ def collectQuestions(usersChoise):
     return questions
 
 def timegiver(startTime, answertime):
+    tic = startTime
+    toc = answertime
     time = int(toc-tic)
-    
     return time
 
 def checkTime():
@@ -49,6 +66,9 @@ def intro():
     
 
 if __name__ == "__main__":
-    intro()
-    os.system('clear')
+    
+    if intro():
+        print("YES")
+        player = CreatePlayer()
+    # os.system('clear')
     
