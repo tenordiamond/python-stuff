@@ -1,0 +1,15 @@
+Is the clock Big Ben over 100 years old?
+y
+Are there more than a million bolts in the Golden Gate bridge?
+y
+Did the movie Scream premier after 2011?
+n
+Did David Bowie star in the movie Labyrinth?
+y
+Is Ping the name of a golf brand?
+y
+Can sharks jump?
+y
+Are there 7 bits in a byte?
+n
+
