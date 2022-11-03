@@ -3,9 +3,9 @@
     Print the gameboard and if player press a button, start the game with a countdown from 3
 """
 """TODO"""
-""" Make the userinput reflect the number of questions thats asked
+#Nothing right now
 
-"""
+
 import random
 import sys
 import time
@@ -27,29 +27,34 @@ def CreatePlayer():
 
     return p
 
-def CreateGame():
+def CreateGame(thePlayer):
     print("How many questions do you want 1-6")
     nq = input()
+    p = thePlayer
     game = GameClass()
     game.questions = collectQuestions(nq)
-    game.gameBoard = "ASDASASDASASDSADASDASD"
+    game.gameBoard = createGameBoard(p, nq)
     return game
+
+def createGameBoard(aPlayer, numQuestions):
+    name = player.name
+    nq = numQuestions
+    gameBoard = '####################################################################\nHello ' + name + ' Welcome to the quiz game "Questionz"\nAnswer each question as fast as you can to get higher scores\nAnswer y for YES and n for NO\nTo quit press Ctrl-C\n####################################################################'
+    return gameBoard
 
 def collectQuestions(usersChoise):
     """ Takes the number of questions that the user stated he/she wants and builds the question dictionary
     """
     questions = []
-    print("USER CHOISE IS: " + usersChoise)
     #Build question dict below
     with open('questions.txt') as f: # read list of all lines 
         qaList = [line.rstrip() for line in f]
-        
-        # skip using a dict and have separate lists for q and a?
-        # loop thru qalist with range of 0, userschoise and make the list to return
     
+    # Put as many questions in the list as the user wants
+    # Convert the list into a dictionary
     questions = qaList[:int(usersChoise) * 2 ]
+    questions = convert_list_to_dict(questions)
     
-    print(questions)
     return questions
 
 def convert_list_to_dict(a):
@@ -73,12 +78,6 @@ def checkTime():
     #while true:
 
 def intro():
-    print('####################################################################')
-    print('Welcome to the quiz game "Questionz"                             ###')
-    print('Answer each question as fast as you can to get higher scores     ###')
-    print('Answer y for YES and n for NO                                    ###')
-    print('To quit press Ctrl-C                                             ###')
-    print('####################################################################')
     s = input("To start the game press y and hit enter\n")
     if s == 'y' or s == 'Y':
         return True
@@ -88,9 +87,9 @@ if __name__ == "__main__":
     
     if intro():
         player = CreatePlayer()
-        game = CreateGame()
-        # print(game.gameBoard,'\n')
-        # print(game.questions)
+        game = CreateGame(player)
+        print(game.gameBoard,'\n')
+    
 
     # os.system('clear')
     
