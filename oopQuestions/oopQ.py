@@ -3,7 +3,7 @@
     Print the gameboard and if player press a button, start the game with a countdown from 3
 """
 """TODO"""
-#Nothing right now
+# Work with the runGame method to start the actual game
 
 
 import random
