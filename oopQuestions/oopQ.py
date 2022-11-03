@@ -2,6 +2,10 @@
     First ask the name of player and then how many questions they want
     Print the gameboard and if player press a button, start the game with a countdown from 3
 """
+"""TODO"""
+""" Make the userinput reflect the number of questions thats asked
+
+"""
 import random
 import sys
 import time
@@ -34,21 +38,16 @@ def CreateGame():
 def collectQuestions(usersChoise):
     """ Takes the number of questions that the user stated he/she wants and builds the question dictionary
     """
-    questions = {}
+    questions = []
     print("USER CHOISE IS: " + usersChoise)
     #Build question dict below
     with open('questions.txt') as f: # read list of all lines 
         qaList = [line.rstrip() for line in f]
         
-        #must build list with as many questions as user demands!?? HOW??
-        # skip using a dict and have separate lists for q and a
-    # loop thru qalist with range of 0, userschoise and make the list to return
-    #This instead of converting it to a dict
-    if int(usersChoise) % 2 == 0:
-        questions = qaList[:int(usersChoise) + 2]
-    else:
-        questions = qaList[:int(usersChoise) + 3]
+        # skip using a dict and have separate lists for q and a?
+        # loop thru qalist with range of 0, userschoise and make the list to return
     
+    questions = qaList[:int(usersChoise) * 2 ]
     
     print(questions)
     return questions
