@@ -4,6 +4,7 @@
 """
 """TODO"""
 # Work with the runGame method to start the actual game
+# comment all stuff to make it more understandable
 
 
 import random
