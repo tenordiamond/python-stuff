@@ -19,7 +19,7 @@ class PlayerClass:
     name = ""
     points = 0
 
-def CreatePlayer():
+def createPlayer():
     p = PlayerClass
     print("Type your chosen name\n")
     p.name = input()
@@ -27,7 +27,7 @@ def CreatePlayer():
 
     return p
 
-def CreateGame(thePlayer):
+def createGame(thePlayer):
     print("How many questions do you want 1-6")
     nq = input()
     p = thePlayer
@@ -53,16 +53,16 @@ def collectQuestions(usersChoise):
     # Put as many questions in the list as the user wants
     # Convert the list into a dictionary
     questions = qaList[:int(usersChoise) * 2 ]
-    questions = convert_list_to_dict(questions)
+    questions = convertListToDict(questions)
     
     return questions
 
-def convert_list_to_dict(a):
+def convertListToDict(a):
     it = iter(a)
     res_dct = dict(zip(it, it))
     return res_dct
 
-def timegiver(startTime, answertime):
+def timeGiver(startTime, answertime):
     tic = startTime
     toc = answertime
     time = int(toc-tic)
@@ -83,6 +83,7 @@ def runGame(user, game):
     # check total time consumed with timeGiver()
     # set points with total time
     # check if it's game over
+    return 0
 
 def intro():
     s = input("To start the game press y and hit enter\n")
@@ -94,8 +95,8 @@ if __name__ == "__main__":
     
     
     if intro():
-        player = CreatePlayer()
-        game = CreateGame(player)
+        player = createPlayer()
+        game = createGame(player)
         print(game.gameBoard,'\n')
         runGame(player, game)
     
