@@ -38,12 +38,19 @@ def collectQuestions(usersChoise):
     print("USER CHOISE IS: " + usersChoise)
     #Build question dict below
     with open('questions.txt') as f: # read list of all lines 
-        klist = f.read().splitlines()
+        qaList = [line.rstrip() for line in f]
+        
         #must build list with as many questions as user demands!?? HOW??
- 
-    questions = convert_list_to_dict(l)
+        # skip using a dict and have separate lists for q and a
+    # loop thru qalist with range of 0, userschoise and make the list to return
+    #This instead of converting it to a dict
+    if int(usersChoise) % 2 == 0:
+        questions = qaList[:int(usersChoise) + 2]
+    else:
+        questions = qaList[:int(usersChoise) + 3]
     
-    print(usersChoise)
+    
+    print(questions)
     return questions
 
 def convert_list_to_dict(a):
@@ -84,7 +91,7 @@ if __name__ == "__main__":
         player = CreatePlayer()
         game = CreateGame()
         # print(game.gameBoard,'\n')
-        print(game.questions)
+        # print(game.questions)
 
     # os.system('clear')
     
