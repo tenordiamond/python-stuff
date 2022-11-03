@@ -39,7 +39,7 @@ def CreateGame(thePlayer):
 def createGameBoard(aPlayer, numQuestions):
     name = player.name
     nq = numQuestions
-    gameBoard = '####################################################################\nHello ' + name + ' Welcome to the quiz game "Questionz"\nAnswer each question as fast as you can to get higher scores\nAnswer y for YES and n for NO\nTo quit press Ctrl-C\n####################################################################'
+    gameBoard = '####################################################################\nHello ' + name + ' Welcome to the quiz game "Questionz"\nAnswer each of the ' + numQuestions + ' questions as fast as you can to get higher scores\nAnswer y for YES and n for NO\nTo quit press Ctrl-C\n####################################################################'
     return gameBoard
 
 def collectQuestions(usersChoise):
@@ -74,8 +74,15 @@ def checkTime():
     return t
 
 
-#def runGame(user, game):
-    #while true:
+def runGame(user, game):
+    #run game in while loop and put a try/catch to fetch ctrl-c for the ending of the game
+    # ask questions
+    # check start time
+    # check if answer correct
+    # check end time
+    # check total time consumed with timeGiver()
+    # set points with total time
+    # check if it's game over
 
 def intro():
     s = input("To start the game press y and hit enter\n")
@@ -85,10 +92,12 @@ def intro():
 
 if __name__ == "__main__":
     
+    
     if intro():
         player = CreatePlayer()
         game = CreateGame(player)
         print(game.gameBoard,'\n')
+        runGame(player, game)
     
 
     # os.system('clear')
