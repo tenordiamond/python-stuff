@@ -74,16 +74,69 @@ def checkTime():
     t = int(time.perf_counter())
     return t
 
+def askQuestion(theQuestion):
+    q = theQuestion
 
-def runGame(user, game):
+def checkAnswer(answer, game, question):
+    # if the answer match the value of the key in question dictionary return true
+    if answer == game.questions.get(question):
+        # print("EASY")
+        return True
+    else:
+        return False
+
+def gameOn(gameQuestions, counter):
+    if len(gameQuestions) == counter:
+        return False
+    else:
+        return True
+
+def setPoints(time):
+    p = 0
+    if time < 1:
+        p = 100
+    elif time > 1 and time < 4:
+        p = 5
+    else:
+        p = 1
+    if p > 120:
+        p += 150
+    return p
+
+def presentResult(playerPoints):
+    print('Good job, your  total score is: ' +  str(playerPoints))
+
+
+def runGame(player, game):
+    p = player
+    g = game
+    
     #run game in while loop and put a try/catch to fetch ctrl-c for the ending of the game
-    # ask questions
-    # check start time
-    # check if answer correct
-    # check end time
-    # check total time consumed with timeGiver()
-    # set points with total time
-    # check if it's game over
+    while True:
+        try:
+            # ask questions
+            
+            for q in game.questions:
+                # check start time
+                st = checkTime()
+                #print question to user ant take the answer as input
+                print(q)
+                a = input("Yes or No? ")
+                # check end time
+                et = checkTime()
+                # check if answer correct
+                print(checkAnswer(a, g, q)) #need to make this function
+                # check total time consumed with timeGiver()
+                totalTime = timeGiver(st, et)
+                if checkAnswer(a, g, q):
+                    # set points with total time
+                    player.points += setPoints(totalTime) #måste fixa en metid för setPoints
+            presentResult(int(player.points))
+            break   
+        except KeyboardInterrupt:
+            sys.exit(0)
+    
+    
     return 0
 
 def intro():
@@ -91,6 +144,10 @@ def intro():
     if s == 'y' or s == 'Y':
         return True
     
+def ready():
+    s = input("READY?  y/n\n")
+    if s == 'y' or s == 'Y':
+        return True
 
 if __name__ == "__main__":
     
@@ -99,7 +156,8 @@ if __name__ == "__main__":
         player = createPlayer()
         game = createGame(player)
         print(game.gameBoard,'\n')
-        runGame(player, game)
+        if ready():
+            runGame(player, game)
     
 
     # os.system('clear')
