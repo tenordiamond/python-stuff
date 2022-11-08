@@ -20,7 +20,7 @@ points = 0
 # put all the questions in a list
 l = list(testQuestionDictionary.keys())
 
-
+    
 print('####################################################################')
 print('Welcome to the quiz game "Questionz"                             ###')
 print('Answer each question as fast as you can to get higher scores     ###')

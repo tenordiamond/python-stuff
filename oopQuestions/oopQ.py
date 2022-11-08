@@ -46,16 +46,20 @@ def createGameBoard(aPlayer, numQuestions):
 def collectQuestions(usersChoise):
     """ Takes the number of questions that the user stated he/she wants and builds the question dictionary
     """
-    questions = []
-    #Build question dict below
-    with open('questions.txt') as f: # read list of all lines 
-        qaList = [line.rstrip() for line in f]
-    
-    # Put as many questions in the list as the user wants
-    # Convert the list into a dictionary
-    questions = qaList[:int(usersChoise) * 2 ]
-    questions = convertListToDict(questions)
-    
+    try:
+        questions = []
+        #Not efficient to read all the lines from the file if the user only wants a couple of them. What if the file contains 100k questions
+        #In the future implement a database
+        with open('questions.txt') as f: # read list of all lines 
+            qaList = [line.rstrip() for line in f]
+        
+        # Put as many questions in the list as the user wants
+        # Convert the list into a dictionary
+        questions = qaList[:int(usersChoise) * 2 ]
+        questions = convertListToDict(questions)
+    except ValueError:
+        print(usersChoise + " is not a number\n Restart")
+        sys.exit()
     return questions
 
 def convertListToDict(a):
